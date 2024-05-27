@@ -1,0 +1,2 @@
+-std=c++17
+-ID:/Lib/qt6_670_static_64/include
