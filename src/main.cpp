@@ -1,5 +1,6 @@
 #include <QtWidgets/QApplication>
 #include <csignal>
+#include <mylibrary.h>
 
 #include "mainwindow.h"
 
@@ -16,6 +17,8 @@ int main(int argc, char *argv[]) {
   win.show();
 
   qDebug() << "QtApp";
+
+  sayHello("Bro");
 
   return app.exec();
 }

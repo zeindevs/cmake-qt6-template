@@ -29,22 +29,29 @@ find_package(Qt6 REQUIRED COMPONENTS
 	Widgets
 	Gui)
 
+set(HEADERS
+    src/mainwindow.h)
+
 set(SOURCES 
 	src/main.cpp
+	src/mainwindow.cpp)
 
-	src/resources/ui/mainwindow.ui
+set(UIS
+	src/resources/ui/mainwindow.ui)
 
-	src/mainwindow.cpp
-	src/mainwindow.h
-
+set(RESOURCES 
 	src/resources/app.rc
 	src/resources/resource.qrc)
 
 qt_standard_project_setup()
 
-add_executable(QtApp ${SOURCES})
+# add_subdirectory(3rdparty/SomeLibrary)
+add_subdirectory(mylibrary)
+
+add_executable(QtApp ${SOURCES} ${HEADERS} ${UIS} ${RESOURCES})
 
 target_link_libraries(QtApp PRIVATE 
+	mylibrary
 	Qt6::Core
 	Qt6::Widgets
 	Qt6::Gui)
