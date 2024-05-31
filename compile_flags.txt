@@ -1,4 +1,4 @@
 -std=c++17
--ID:/Lib/qt6_670_static_64/include
+-ID:/Qt/6.7.1/msvc2019_64_static/include
 -I./mylibrary/include
 -I./3rdparty

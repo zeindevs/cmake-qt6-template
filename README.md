@@ -21,7 +21,7 @@ cmake -G "Ninja" ..\.. -DCMAKE_BUILD_TYPE="Release" # for Release
 
 cd build
 mkdir msvc && cd msvc
-cmake -G "Visual Studio 17 2022" ..\.. -DCMAKE_PREFIX_PATH=D:\\Lib\\qt6_670_static_64 -DCMAKE_INSTALL_PREFIX=install -DCMAKE_CONFIGURATION_TYPES="Release"
+cmake -G "Visual Studio 17 2022" ..\.. -DCMAKE_CONFIGURATION_TYPES="Release"
 cmake --build . --config Release
 cmake --install .
 ```
