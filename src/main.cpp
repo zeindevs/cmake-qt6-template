@@ -1,24 +1,28 @@
-#include <QtWidgets/QApplication>
 #include <csignal>
 #include <mylibrary.h>
+#include <QtWidgets/QApplication>
 
 #include "mainwindow.h"
 
-void handleSigterm(int) { QApplication::quit(); }
+void handleSigterm(int)
+{
+    QApplication::quit();
+}
 
-int main(int argc, char *argv[]) {
-  signal(SIGTERM, handleSigterm);
-  signal(SIGINT, handleSigterm);
+int main(int argc, char *argv[])
+{
+    signal(SIGTERM, handleSigterm);
+    signal(SIGINT, handleSigterm);
 
-  QApplication app(argc, argv);
+    QApplication app(argc, argv);
 
-  MainWindow win;
+    MainWindow win;
 
-  win.show();
+    win.show();
 
-  qDebug() << "QtApp";
+    qDebug() << "QtApp";
 
-  sayHello("Bro");
+    sayHello("Bro");
 
-  return app.exec();
+    return app.exec();
 }

@@ -50,8 +50,8 @@ add_subdirectory(mylibrary)
 qt_add_executable(${PROJECT_NAME} MANUAL_FINALIZATION
 	${SOURCES}
  	${HEADERS}
-  ${UIS} 
-  ${RESOURCES}
+	${UIS} 
+	${RESOURCES}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE 
@@ -64,11 +64,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.${PROJECT_NAME})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
-   ${BUNDLE_ID_OPTION}
-   MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-   MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-   MACOSX_BUNDLE TRUE
-   WIN32_EXECUTABLE TRUE
+	${BUNDLE_ID_OPTION}
+	MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+	MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+	MACOSX_BUNDLE TRUE
+	WIN32_EXECUTABLE TRUE
 )
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
@@ -76,14 +76,14 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release")
 	file(MAKE_DIRECTORY ${INSTALL_PATH})
 
 	add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${INSTALL_PATH}"
-    COMMAND windeployqt6 --no-translations --no-opengl-sw --no-translations --no-compiler-runtime --dir ${INSTALL_PATH} $<TARGET_FILE:${PROJECT_NAME}>
-    COMMENT "Deploying Qt application..."
+	    COMMAND ${CMAKE_COMMAND} -E make_directory "${INSTALL_PATH}"
+	    COMMAND windeployqt6 --no-translations --no-opengl-sw --no-translations --no-compiler-runtime --dir ${INSTALL_PATH} $<TARGET_FILE:${PROJECT_NAME}>
+	    COMMENT "Deploying Qt application..."
  	)
 
 	add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${PROJECT_NAME}> ${INSTALL_PATH}
-    COMMENT "Copying executable to deployment directory"
+	    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${PROJECT_NAME}> ${INSTALL_PATH}
+	    COMMENT "Copying executable to deployment directory"
  	)
 endif()
 
